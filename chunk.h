@@ -25,7 +25,8 @@ typedef struct Chunk
 	uint8_t *code;
 } Chunk;
 
-void initChunk(Chunk *chunk);
-void writeChunk(Chunk *chunk, uint8_t byte);
+void init_chunk(Chunk *chunk);
+void write_chunk(Chunk *chunk, uint8_t byte);
+void free_chunk(Chunk *chunk);
 
 #endif /* mantiki_chunk_h */
