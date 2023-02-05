@@ -13,11 +13,10 @@ typedef enum TOKENS
 	TOKEN_RPAREN
 } TOKENS;
 
-typedef struct Token {
+typedef struct Token
+{
 	char *type;
 	TOKENS value;
 } Token;
-
-void print_tokens(char *input);
 
 #endif /* mantiki_tokens_h */

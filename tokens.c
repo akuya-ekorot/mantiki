@@ -1,9 +1,36 @@
-#include "tokens.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "tokens.h"
+#include "vm.h"
 
-void print_tokens(char *input)
+Stack *add_node(TOKENS token, Stack *stack)
+{
+	Stack *new;
+
+	new = init_stack(&new);
+
+	new->token = token;
+	new->next = stack;
+	stack = new;
+
+	return (stack);
+}
+
+void print_stack(Stack *stack)
+{
+	Stack *tmp;
+
+	tmp = stack;
+
+	while (tmp)
+	{
+		printf("%d\n", tmp->token);
+		tmp = tmp->next;
+	}
+}
+
+void store_tokens(Stack *stack, char *input)
 {
 	int i, j;
 	Token tokens[] = {
@@ -17,15 +44,16 @@ void print_tokens(char *input)
 		{NULL, TOKEN_NULL},
 	};
 
+
 	for (i = 0; input[i]; i++)
 	{
-		if (*input == ' ')
-			continue;
-
 		for (j = 0; tokens[j].type; j++)
 		{
 			if (input[i] == *tokens[j].type)
-				printf("Token: %d\n", tokens[j].value);
+			{
+				stack = add_node(tokens[j].value, stack);
+			}
 		}
 	}
+	print_stack(stack);
 }
