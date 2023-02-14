@@ -1,2 +1,0 @@
-# mantiki
-boolean logic interpreter
