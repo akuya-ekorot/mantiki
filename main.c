@@ -3,8 +3,8 @@
 int main(void)
 {
 	size_t size;
-	ssize_t nread;
-	char *line;
+	ssize_t size_read;
+	char *expression;
 
 	size = 0;
 
@@ -12,10 +12,10 @@ int main(void)
 	{
 		printf("$ ");
 
-		nread = getline(&line, &size, stdin);
+		size_read = getline(&expression, &size, stdin);
 
-		if (nread != -1)
-			printf("%s", line);
+		if (size_read != -1)
+			interpret(expression);
 	}
 
 	return (0);
